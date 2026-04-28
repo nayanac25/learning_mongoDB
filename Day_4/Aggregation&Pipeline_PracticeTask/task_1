@@ -1,0 +1,77 @@
+-- Aggregation and pipeline task --
+
+1. Basic Filtering: Find employees from `"Mumbai"` with experience > 4 years.
+db.users.aggregate([
+  {
+    $match:{
+    location:"Mumbai",
+    experience:{$gt:4}
+  }
+  }
+  ])
+
+
+2. Count by Department: Group employees by department & count total employees.
+db.users.aggregate([
+  {
+    $group:{
+      _id:"$department",
+      total_emp:{$sum:1},
+      }
+  }
+])
+
+
+3. Average Salary per Company: Show each company’s average salary & total employees.
+db.users.aggregate([
+  {
+    $group:{
+      _id:"$company",
+      avg_salary:{$avg:"$salary"},
+      total_emp:{$sum:1},
+      }
+  }
+])
+
+
+4. Unique Locations per Department: Show unique locations for each department.
+db.users.aggregate([
+  {
+    $group:{
+      _id:"$department",
+      unique_location:{$addToSet:"$location"}
+      }
+  }
+])
+
+
+5. Highest Salary per Department: Find max salary per department.
+db.users.aggregate([
+  {
+    $group:{
+      _id:"$department",
+      max_salary:{$max:"$salary"}
+      }
+  }
+])
+
+
+6. Developer Role Analysis: Count total developers by role (sorted).
+db.users.aggregate([
+  {
+    $match:{
+      department:"Developer"
+    }
+  },
+  {
+    $group:{
+      _id:"$role",
+      total_developers:{$sum:1}
+      }
+  },
+  {
+    $sort:{
+      total_developers:-1
+    }
+  }
+])
