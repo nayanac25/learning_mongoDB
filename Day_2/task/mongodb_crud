@@ -1,0 +1,40 @@
+use users
+switched to db users
+db["users2"].find()
+{
+  _id: ObjectId('69e9d3a33afa945af2c4e49b'),
+  name: 'Aarav Patel',
+  age: 22,
+  email: '[aarav.patel@example.com](mailto:aarav.patel@example.com)',
+  course: 'MERN Stack',
+  batch: 'B001',
+  mentor: 'Pratik Sabale',
+  joiningDate: '2024-09-01',
+  fees: 12000,
+  status: 'active',
+  skills: [
+    'HTML',
+    'CSS',
+    'JavaScript'
+  ],
+  attendance: 90
+}
+
+{
+  _id: ObjectId('69e9d3a33afa945af2c4e49c'),
+  name: 'Riya Sharma',
+  age: 21,
+  email: '[riya.sharma@example.com](mailto:riya.sharma@example.com)',
+  course: 'Python Full Stack',
+  batch: 'B002',
+  mentor: 'Shreeraj Jadhav',
+  joiningDate: '2024-08-15',
+  fees: 11000,
+  status: 'active',
+  skills: [
+    'Python',
+    'Flask',
+    'MySQL'
+  ],
+  attendance: 95
+}
